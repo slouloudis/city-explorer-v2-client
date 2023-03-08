@@ -17,6 +17,7 @@ function App() {
     try {
       // get the location data
       const API = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_KEY}&q=${searchQuery}&format=json`;
+      console.log(API)
       const res = await axios.get(API);
 
       setLocation(res.data[0]);
@@ -27,6 +28,7 @@ function App() {
       setMapUrl(
         `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${lat},${lon}&zoom=18`
       );
+      setShowError(false);
     } catch (error) {
       console.log(error);
       setLocation({});
